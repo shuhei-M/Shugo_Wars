@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealItemBehaviour : MonoBehaviour, IGrabableComponent
+public class HealItemBehaviour : BaseItemBehavior
 {
     #region define
 
     #endregion
 
     #region serialize field
-    [SerializeField, Range(5.0f, 10.0f)] float _LifeTime = 10.0f;
+    
     #endregion
 
     #region field
     /// <summary> 自身ににアタッチされたコンポーネントを取得するための変数群 </summary>
-    private Transform _GrabedPoint;
-
     private int _HealPoint = 1;
-
-    private float time;
     #endregion
 
     #region property
@@ -29,35 +25,15 @@ public class HealItemBehaviour : MonoBehaviour, IGrabableComponent
     // Start is called before the first frame update
     void Start()
     {
-        _GrabedPoint = transform.Find("GrabedPoint").gameObject.transform;
-        time = 0.0f;
+        SetUpBase();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < -1) DestroyThisItem();
+        if(!TryHeightUpdate()) return;
 
-        time += Time.deltaTime;
-
-        if (time > _LifeTime) DestroyThisItem();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        IPlayerGetItemComponent princess = collision.gameObject.GetComponent<IPlayerGetItemComponent>();
-
-        // 姫でなければ以下の処理は行わない。
-        if (princess == null) return;
-
-        // 回復させる
-        princess.HealLifePoint(_HealPoint);
-
-        // エフェクトを発生させる
-        EffectManager.Instance.Play(EffectManager.EffectID.Heal, transform.position);
-
-        // アイテム消滅
-        DestroyThisItem();
+        if(!TryTimeUpdate()) return;
     }
     #endregion
 
@@ -73,28 +49,22 @@ public class HealItemBehaviour : MonoBehaviour, IGrabableComponent
     }
     #endregion
 
-    #region private function
+    #region protected function
     /// <summary>
-    /// アイテムを消去する
+    /// アイテムの効果を発動させる。
+    /// 継承先の各種アイテムクラスで内容を決める
     /// </summary>
-    private void DestroyThisItem()
+    protected override void ItemAbility(IPlayerGetItemComponent princess)
     {
-        ItemManager.Instance.AliveItemCount--;
+        // 回復させる
+        princess.HealLifePoint(_HealPoint);
 
-        // アイテム消滅
-        Destroy(this.gameObject);
+        // エフェクトを発生させる
+        EffectManager.Instance.Play(EffectManager.EffectID.Heal, transform.position);
     }
     #endregion
 
-    /// <summary> 摘まむ指先から、摘ままれたオブジェクトにアクセスするためのインターフェース </summary>
-    #region IGrabableObject
-    /// <summary> 摘ままれているかどうか </summary>
-    public bool IsGrabed { get; set; }
+    #region private function
 
-    /// <summary> 掴む座標を渡す </summary>
-    public Transform Get_GrabedPoint()
-    {
-        return _GrabedPoint;
-    }
     #endregion
 }

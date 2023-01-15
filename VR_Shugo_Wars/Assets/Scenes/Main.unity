@@ -3159,7 +3159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8816775086462203146, guid: b18a954fdc83d684fae33369a515a5f2, type: 3}
       propertyPath: IsDebugMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8816775086462203185, guid: b18a954fdc83d684fae33369a515a5f2, type: 3}
       propertyPath: m_Name

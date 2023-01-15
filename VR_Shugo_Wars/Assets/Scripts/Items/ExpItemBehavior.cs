@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExpItemBehavior : MonoBehaviour, IGrabableComponent
+public class ExpItemBehavior : BaseItemBehavior
 {
     #region define
 
     #endregion
 
     #region serialize field
-    [SerializeField, Range(5.0f, 10.0f)] float _LifeTime = 10.0f;
+    
     #endregion
 
     #region field
     /// <summary> 自身ににアタッチされたコンポーネントを取得するための変数群 </summary>
-    private Transform _GrabedPoint;
     private ExpItemSensorBehaviour _ExpItemSensor;
     private Rigidbody _Rigidbody;
 
@@ -24,8 +23,6 @@ public class ExpItemBehavior : MonoBehaviour, IGrabableComponent
     private float _Speed;   // 姫へ向かって動く際のスピード
 
     private bool _IsMove;   // アイテムが姫に向かって動いているか
-
-    private float time;
     #endregion
 
     #region property
@@ -36,24 +33,24 @@ public class ExpItemBehavior : MonoBehaviour, IGrabableComponent
     // Start is called before the first frame update
     void Start()
     {
-        _GrabedPoint = transform.Find("GrabedPoint").gameObject.transform;
+        SetUpBase();
+
         _ExpItemSensor = transform.Find("Sensor").gameObject.GetComponent<ExpItemSensorBehaviour>();
         _Rigidbody = GetComponent<Rigidbody>();
 
         _GapVec = Vector3.zero;
         _Speed = 0.0f;
         _IsMove = false;
-
-        time = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < -1) DestroyThisItem();
-        _IsMove = _ExpItemSensor.IsFindPlayer;
+        if(!TryHeightUpdate()) return;
 
-        if(time > _LifeTime) DestroyThisItem();
+        if (!TryTimeUpdate()) return;
+
+        _IsMove = _ExpItemSensor.IsFindPlayer;
 
         if (_ExpItemSensor.IsFindPlayer)
         {
@@ -71,29 +68,12 @@ public class ExpItemBehavior : MonoBehaviour, IGrabableComponent
             _Rigidbody.useGravity = true;
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        IPlayerGetItemComponent princess = collision.gameObject.GetComponent<IPlayerGetItemComponent>();
-
-        // 姫でなければ以下の処理は行わない。
-        if (princess == null) return;
-
-        // 経験値を与える
-        princess.AddExp(_AddExpPoint);
-
-        // エフェクトを発生させる
-        EffectManager.Instance.Play(EffectManager.EffectID.Exp, transform.position);
-
-        // アイテム消滅
-        DestroyThisItem();
-    }
     #endregion
 
     #region public function
     /// <summary>
-    /// 回復ポイントを変更する
-    /// ドロップ元の敵クラスから、回復量を調節できるようにする。
+    /// 経験値ポイントを変更する
+    /// ドロップ元の敵クラスから、経験値を調節できるようにする。
     /// </summary>
     /// <param name="point"></param>
     public void SetAddExpPoint(int point)
@@ -102,28 +82,22 @@ public class ExpItemBehavior : MonoBehaviour, IGrabableComponent
     }
     #endregion
 
-    #region private function
+    #region protected function
     /// <summary>
-    /// アイテムを消去する
+    /// アイテムの効果を発動させる。
+    /// 継承先の各種アイテムクラスで内容を決める
     /// </summary>
-    private void DestroyThisItem()
+    protected override void ItemAbility(IPlayerGetItemComponent princess)
     {
-        ItemManager.Instance.AliveItemCount--;
+        // 経験値を与える
+        princess.AddExp(_AddExpPoint);
 
-        // アイテム消滅
-        Destroy(this.gameObject);
+        // エフェクトを発生させる
+        EffectManager.Instance.Play(EffectManager.EffectID.Exp, transform.position);
     }
     #endregion
 
-    /// <summary> 摘まむ指先から、摘ままれたオブジェクトにアクセスするためのインターフェース </summary>
-    #region IGrabableObject
-    /// <summary> 摘ままれているかどうか </summary>
-    public bool IsGrabed { get; set; }
+    #region private function
 
-    /// <summary> 掴む座標を渡す </summary>
-    public Transform Get_GrabedPoint()
-    {
-        return _GrabedPoint;
-    }
     #endregion
 }
