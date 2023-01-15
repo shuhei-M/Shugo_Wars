@@ -19,6 +19,7 @@
 | ▼[Effectフォルダ](https://github.com/shuhei-M/Shugo_Wars/tree/main/VR_Shugo_Wars/Assets/Scripts/Effect) |  |  |
 | [HealEffect.cs](https://github.com/shuhei-M/Shugo_Wars/blob/main/VR_Shugo_Wars/Assets/Scripts/Effect/HealEffect.cs) | エフェクトそれぞれにアタッチする。発生させたエフェクトを、0.5秒後に消滅させる。 |  |
 | ▼[Itemsフォルダ](https://github.com/shuhei-M/Shugo_Wars/blob/main/VR_Shugo_Wars/Assets/Scripts/Items) |  |  |
+| [BaseItemBehavior.cs](https://github.com/shuhei-M/Shugo_Wars/blob/main/VR_Shugo_Wars/Assets/Scripts/Items/BaseItemBehavior.cs) | 各種アイテムの基底クラス。 |  |
 | [ExpItemBehavior.cs](https://github.com/shuhei-M/Shugo_Wars/blob/main/VR_Shugo_Wars/Assets/Scripts/Items/ExpItemBehavior.cs) | 経験値獲得アイテム。掴み可能オブジェクト。姫に触れると経験値を獲得させ、エフェクトを発生させてから消滅する。姫に吸い寄せられる機能を実装予定。 |  |
 | [ExpItemSensorBehaviour.cs](https://github.com/shuhei-M/Shugo_Wars/blob/main/VR_Shugo_Wars/Assets/Scripts/Items/ExpItemSensorBehaviour.cs) | 姫に引き寄せられるかどうかの検知用のクラス。<br>検知範囲に姫がいるかどうかのプロパティを持ち、親オブジェクトのExpItemBehaviorクラスから参照される。 |  |
 | [HealItemBehaviour.cs](https://github.com/shuhei-M/Shugo_Wars/blob/main/VR_Shugo_Wars/Assets/Scripts/Behaviour/HealItemBehaviour.cs) | 姫回復用アイテム。掴み可能オブジェクト。姫に触れるとライフを回復させ、エフェクトを発生させてから消滅する。 |  |
@@ -33,7 +34,7 @@
 | [StateMachine.cs](https://github.com/shuhei-M/Shugo_Wars/blob/main/VR_Shugo_Wars/Assets/Scripts/Utility/StateMachine.cs) | 姫などのAIを作成するためのステートマシン。ジェネリッククラス。 |  |
 
 <!-- 
-| [.cs]() |  |
+| [.cs]() |  |  |
 | [ソースファイル名](プロジェクトに保存されているファイル名) | 説明文 |
 上の文を4行目以降にコピペしてもらって内容書き換えれば表になります
 ↓例
