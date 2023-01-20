@@ -7,9 +7,8 @@
 - 頭部付近を摘まむように持ち、手で移動させることが出来ます。  
 ![姫摘まみ](https://user-images.githubusercontent.com/103874162/213637903-f74a0fb4-ba48-4878-99f5-391ccbe2b71a.gif)  
 ## (2)各種アイテム（回復、経験値、武器）
-- 回復アイテム  
-![摘まみ_回復](https://user-images.githubusercontent.com/103874162/213639118-c95dff0c-808e-4230-b070-9eeb0ba22814.gif)  
-- 武器  
+- 回復アイテム　　　　　　　　　　　　　　　　　　　　／　武器  
+![摘まみ_回復](https://user-images.githubusercontent.com/103874162/213639118-c95dff0c-808e-4230-b070-9eeb0ba22814.gif)
 ![摘まみ_武器](https://user-images.githubusercontent.com/103874162/213639138-202e1dcd-afbb-49c9-a177-81bb1b99aadb.gif)  
 
 
@@ -24,7 +23,7 @@
 
 # 3. ゲームフローの制御
 - フローの設計、枠組み作成  
-	- ①正面方向をセッティングする。ハンドサインにより、カウントダウンに移行する。  
+	- ①正面方向をセッティングする　　　　　　　　　　　　／　ハンドサインにより、カウントダウンに移行する。  
 	![03_ゲームフロー_正面](https://user-images.githubusercontent.com/103874162/213644241-a20b27b6-ddf9-496d-b698-a2396dfc9ebb.gif)
         ![03_ゲームフロー_ハンドサイン](https://user-images.githubusercontent.com/103874162/213644639-7392f812-a8bf-482b-aa37-7fa8fe4d99f0.gif)  
 	
@@ -34,7 +33,7 @@
 	- ③ハンドのセットアップ（この項目のみ、枠組みの制作だけ担当しました。）  
 	
 	- ④インゲーム  
-	- ⑤ゲームクリア・オーバー   
+	- ⑤ゲームクリア　　　　　　　　　　　　　　　　　　　／　ゲームオーバー   
 	![03_ゲームフロー_ゲームクリア](https://user-images.githubusercontent.com/103874162/213647481-472160b2-85b1-4ad5-b0f6-e88349cd53c7.gif)
 	![03_ゲームフロー_ゲームオーバー](https://user-images.githubusercontent.com/103874162/213647534-d3ba7863-6a99-487f-8be2-7993989e2849.gif)
 - ハンドセットアップの中身以外の全てを作成  
@@ -66,6 +65,8 @@
 - 回復アイテム  
 - 経験値アイテム  
 ## (3)ゲームクリアエフェクト
+- プレイヤーや机の周囲に花火のエフェクトが出現する  
+![06_エフェクト_クリア](https://user-images.githubusercontent.com/103874162/213649551-e4d9513f-9b0e-4a43-830b-f9682da1ed3b.gif)
 
 
 # 7.その他
