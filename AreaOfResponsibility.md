@@ -14,9 +14,11 @@
 
 
 # 2. 姫
-- 手に乗る機能
+- 手に乗る機能  
+![02_姫_乗り](https://user-images.githubusercontent.com/103874162/213641234-b53bd250-1b33-4e8c-a31b-e459f0d51011.gif)  
 - 乗っている際、一定時間以上手の角度が急な場合、姫が手から落ちる  
 - 手から離れると、近い方の手に近づいてくる機能  
+![02_姫_移動](https://user-images.githubusercontent.com/103874162/213642545-e74314ae-a2ff-4425-97c1-21c62b54e614.gif)  
 - アニメーションコントローラーの作成（Princess Animator Controller）  
 
 
