@@ -3,8 +3,14 @@
 
 # 1. モノを掴む（摘まむ）機能
 - 摘ままれる機能をインターフェイス化し、下記のオブジェクトなどに継承させました。  
-- 姫  
-- 各種アイテム（回復、経験値、武器）  
+## (1)姫  
+- 頭部付近を摘まむように持ち、手で移動させることが出来ます。  
+![姫摘まみ](https://user-images.githubusercontent.com/103874162/213637903-f74a0fb4-ba48-4878-99f5-391ccbe2b71a.gif)  
+## (2)各種アイテム（回復、経験値、武器）
+- 回復アイテム  
+![摘まみ_回復](https://user-images.githubusercontent.com/103874162/213639118-c95dff0c-808e-4230-b070-9eeb0ba22814.gif)  
+- 武器  
+![摘まみ_武器](https://user-images.githubusercontent.com/103874162/213639138-202e1dcd-afbb-49c9-a177-81bb1b99aadb.gif)  
 
 
 # 2. 姫
