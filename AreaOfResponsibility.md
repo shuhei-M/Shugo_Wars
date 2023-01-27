@@ -13,16 +13,16 @@
 
 
 # 2. 姫
-- 手に乗る機能  
-![02_姫_乗り](https://user-images.githubusercontent.com/103874162/213641234-b53bd250-1b33-4e8c-a31b-e459f0d51011.gif)  
-- 乗っている際、一定時間以上手の角度が急な場合、姫が手から落ちる  
+- 手に乗る機能  　　　　　　　　　　　　　　　　　　　　／　乗っている際、一定時間以上手の角度が急な場合、姫が手から落ちる 
+![02_姫_乗り](https://user-images.githubusercontent.com/103874162/213641234-b53bd250-1b33-4e8c-a31b-e459f0d51011.gif)
+![02_姫_落ち](https://user-images.githubusercontent.com/103874162/215054025-ca987d55-7731-45ab-9c08-7c47f5cd0f97.gif)  
 - 手から離れると、近い方の手に近づいてくる機能  
 ![02_姫_移動](https://user-images.githubusercontent.com/103874162/213642545-e74314ae-a2ff-4425-97c1-21c62b54e614.gif)  
 - アニメーションコントローラーの作成（Princess Animator Controller）  
 
 
 # 3. ゲームフローの制御
-- フローの設計、枠組み作成  
+- フローの設計、枠組み作成   
 	- ①正面方向をセッティングする　　　　　　　　　　　　／　ハンドサインにより、カウントダウンに移行する。  
 	![03_ゲームフロー_正面](https://user-images.githubusercontent.com/103874162/213644241-a20b27b6-ddf9-496d-b698-a2396dfc9ebb.gif)
         ![03_ゲームフロー_ハンドサイン](https://user-images.githubusercontent.com/103874162/213644639-7392f812-a8bf-482b-aa37-7fa8fe4d99f0.gif)  
